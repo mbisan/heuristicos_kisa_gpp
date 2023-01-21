@@ -83,8 +83,11 @@ auto localSearch(Graph graph, Perm perm, int n) {
     Perm new_p = Perm::Constant(perm.size(), 0); new_p = perm;
     Perm best_p = Perm::Constant(perm.size(), 0); best_p = perm;
 
+    Perm ones = Perm::Constant(perm.size(), 1);
+    Perm new_p_m(perm.size());
+
     for (int counter = 0; counter < n; counter++){
-        Perm p_m = Perm::Constant(perm.size(), 1) - p;
+        Perm p_m = ones - p;
 
         for (int i=0; i<perm.size(); i++){
             if (!p(i)) continue;
@@ -98,7 +101,7 @@ auto localSearch(Graph graph, Perm perm, int n) {
 
                 new_p(j) ^= 1;
 
-                Perm new_p_m = Perm::Constant(perm.size(), 1) - new_p;
+                new_p_m = ones - new_p;
 
                 cost_p -= p.dot(graph.row(j)) + p.dot(graph.col(j)) + sub_cause_i;
 
