@@ -13,7 +13,9 @@
 				"${fileDirname}\\${fileBasenameNoExtension}.exe",
 				"-I",
 				"C:\\Librerias\\eigen-3.4.0",
-				"-fopenmp"
+				"-fopenmp",
+				"-O2",
+				"-DNDEBUG"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
